@@ -55,7 +55,7 @@
 	                        <td v-if="needCheckbox" style="border:0px"></td>
 	                        <td style="border:0px"></td>
 	                        <td :colspan="columns.length - (needCheckbox?1:0) - (needDetailRow?1:0)">
-	                            <component :is="param.detailRowConponentName" :row-data="row" :key="row.id" :ref="'detail_'+row.id"></component>
+	                            <component :is="param.detailRowComponentName" :row-data="row" :key="row.id" :ref="'detail_'+row.id"></component>
 	                        </td>
 	                    </tr>
 	                </template>
@@ -168,7 +168,7 @@ export default {
                     defaultPageNumber: 10,
                     pageNumberList: [],
                     url: "",
-                    detailRowConponentName: "",
+                    detailRowComponentName: "",
                     reloadFlag: false,
                     buttonAdd: {},
                     buttonAction: [],

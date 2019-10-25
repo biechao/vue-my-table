@@ -93,7 +93,7 @@ export default {
         sortOrder:"asc",
         sortColumn:"name",
         height:200,
-        detailRowConponentName:"col-detail"  
+        detailRowComponentName:"col-detail"  
       }
     }
   },
