@@ -1,11 +1,19 @@
 {
   "name": "vue-my-table",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "this is table for vue",
+  "main": "lib/vueMyTable.umd.js",
+  "keywords": "vue table",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vueMyTable --dest lib packages/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biechao/vue-my-table"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.24",
