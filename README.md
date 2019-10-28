@@ -41,7 +41,7 @@ Object for param
 			<td>columns</td>
 			<td>Array</td>
 			<td></td>
-			<td>Column of the table</td>
+			<td>Column of the table, please refer to this [table](#columns)</span></td>
 		</tr>
 		<tr>
 			<td>sortColumn</td>
@@ -67,9 +67,74 @@ Object for param
 			<td>-</td>
 			<td>component for the expand detail row</td>
 		</tr>
+		<tr>
+			<td>Striped</td>
+			<td>Boolean</td>
+			<td>false</td>
+			<td>Striped table makes it easier to distinguish different rows, false by default</td>
+		</tr>				
 	</tbody>
 </table>
-
+## Columns
+Object for columns
+<table class="custom">
+	<thead>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Default</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>index</td>
+			<td>String</td>
+			<td>-</td>
+			<td>index name for the tr in table, it should be a key in json data, such as 'id'</td>
+		</tr>
+		<tr>
+			<td>isCheckbox</td>
+			<td>Boolean</td>
+			<td>false</td>
+			<td>Show checkbox in the column, if it is set to true, there is no need to set value for the other parameters</td>
+		</tr>
+		<tr>
+			<td>isDetailRow</td>
+			<td>Boolean</td>
+			<td>-</td>
+			<td>Show expand icon in the column, if it is set to true, there is no need to set value for the other parameters</td>
+		</tr>
+		<tr>
+			<td>label</td>
+			<td>String</td>
+			<td>-</td>
+			<td>header of the column</td>
+		</tr>
+		<tr>
+			<td>sortable</td>
+			<td>Boolean</td>
+			<td>false</td>
+			<td>Support sort for this column</td>
+		</tr>
+		<tr>
+			<td>width</td>
+			<td>Int</td>
+			<td>-</td>
+			<td>width for this column, it is percent, not PX</td>
+		</tr>
+		<tr>
+			<td>callback</td>
+			<td>function</td>
+			<td>-</td>
+			<td>if set callback for this column, the content of this column will be return value of the callback function, <br/>and the html tag will be render in the return value, so to prevent XSS injection, make sure the html tags such as '<' and '>' have been escaped before return.</td>
+		</tr>
+		<tr>
+			<td>component_name</td>
+			<td>String</td>
+			<td>-</td>
+			<td>If callback can not match your requirement, you can pass a component to the column and do anything you want in this component</td>
+		</tr>																	
+	</tbody>
+</table>
 
 ## Code Examples
 

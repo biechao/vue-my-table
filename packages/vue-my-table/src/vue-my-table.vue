@@ -27,16 +27,15 @@
 	                    <td :colspan="columns.length" class="no-data">{{$t("no_data")}}</td>
 	                </tr>
 	                <template v-else v-for="(row,index) in rows">
-	                    <tr :class="{active:row.checked}">
+	                    <tr :class="{active:row.checked,stripe:stripeTR(index)}">
 	                        <template v-for="column in columns">
 	                            <td :width="columnWidth(column)" v-if="column.isCheckbox" class="vue-checkbox">
 	                                <div @click="clickCheckItem(row,index)" class="checkbox" :class="{'checked':row.checked}">
 	                                    <span class="checkbox_span" :class="checkAllClass"></span>
 	                                </div>
 	                            </td>
-	                            <td :width="columnWidth(column)" v-else-if="column.isDetailRow" class="vue-detail-row-col" @click="clickDetailRow(row,index)">
-	                                 <font-awesome-icon v-show="row.expand" class="icon" :icon="['fas','angle-down']" />
-	                                 <font-awesome-icon v-show="!row.expand" class="icon" :icon="['fas','angle-right']" />
+	                            <td :width="columnWidth(column)" v-else-if="column.isDetailRow" class="vue-detail-row-col" @click="clickDetailRow(row,index)" :class="{'expand':row.expand}">
+	                                 <font-awesome-icon class="icon" :icon="['fas','angle-right']" />
 	                            </td>
 	                            <td :width="columnWidth(column)" v-else-if="column.callback" :class="typeof(column.className)==='undefined'?'':column.className" v-html="column.callback(row[column.index],row)">
 	                            </td>
@@ -54,7 +53,7 @@
 	                    <tr class="vue-table-detail" v-if="needDetailRow" v-show="row.expand">
 	                        <td v-if="needCheckbox" style="border:0px"></td>
 	                        <td style="border:0px"></td>
-	                        <td :colspan="columns.length - (needCheckbox?1:0) - (needDetailRow?1:0)">
+	                        <td :colspan="columns.length - (needCheckbox?1:0) - (needDetailRow?1:0)" class="detail_td">
 	                            <component :is="param.detailRowComponentName" :row-data="row" :key="row.id" :ref="'detail_'+row.id"></component>
 	                        </td>
 	                    </tr>
@@ -262,6 +261,9 @@ export default {
         },
         show_pager_dropdown() {
             this.pager_dropdown_show = true;
+        },
+        stripeTR(index){
+            return this.param.stripe && index%2 == 1;
         },
         goPrev() {
             if (this.page == 0) {

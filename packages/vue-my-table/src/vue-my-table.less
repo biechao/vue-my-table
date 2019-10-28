@@ -80,6 +80,9 @@
       width: 40px;
     }
     tbody tr{
+      &.stripe{
+        background-color:#f4f6fb;
+      }
       td{
         text-align: center;
         padding: 8px 12px;
@@ -88,6 +91,17 @@
         text-align: left;
         &.no-data{
           text-align: center;
+        }
+        .fa-angle-right{
+          transition: transform .2s ease-in-out;
+        }     
+        &.expand{
+          .fa-angle-right{
+            transform: rotate(90deg);
+          }
+        }
+        &.detail_td{
+          border-left:solid 2px #ddd;
         }
       }
       &.active{
@@ -99,8 +113,8 @@
     .vue-detail-row-col{
       cursor: pointer;
       width: 40px;
+      text-align: center;
     }
-
   }
   .table-pagination{
     background-color: #f8f8f8;

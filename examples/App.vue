@@ -31,10 +31,10 @@ export default {
             index:"name",label:"Name",sortable:true,width:30
           },
           {
-            index:"sender",label:"Sender",sortable:true,width:30
+            index:"sender",label:"Sender",sortable:true,width:30,callback:this.formatSender
           },
           {
-            index:"comments",label:"comments",sortable:false,width:38
+            index:"comments",label:"comments",sortable:false,width:38,component_name:"comments"
           }
         ],
         dataSet:[
@@ -92,14 +92,18 @@ export default {
         ],
         sortOrder:"asc",
         sortColumn:"name",
-        height:200,
-        detailRowComponentName:"col-detail"  
+        height:300,
+        detailRowComponentName:"col-detail",
+        stripe:true  
       }
     }
   },
   methods:{
     reloadTable(){
       this.local_param.reloadFlag = !this.local_param.reloadFlag;
+    },
+    formatSender(cell_value,row){
+      return '<b style="color:red;">'+cell_value+'</b>';
     }
   }
 }
