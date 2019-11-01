@@ -1,6 +1,6 @@
 {
   "name": "vue-my-table",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "private": false,
   "description": "this is table for vue",
   "main": "lib/vueMyTable.umd.js",

@@ -16,7 +16,7 @@
 The table is follow boostrap style, but all of the dependencies has been resolved in this components, you do not need to install any other library anymore.
 
 ## Screenshots
-
+![Example screenshot](https://raw.githubusercontent.com/biechao/vue-my-table/master/img/table.png)
 
 ## Setup
 npm install vue-my-table
@@ -175,12 +175,14 @@ Object for param
 </table>
 
 ## Code Examples
-
+For examples please refer to [github](https://biechao.github.io/2019/10/29/how%20to%20use%20vue-my-table/)
 
 ## Features
 Support sort 
 Support fix table header and scrollbar in table body
 Support expand detail row with component
+Support custom sort column
+Support local and server data mode
 Support I18 
 
 To-do list:
@@ -190,7 +192,7 @@ To-do list:
 Init version
 
 ## Contact
-Feel free to contact me here [github](https://biechao.github.io/2019/10/29/how%20to%20use%20vue-my-table/)
+Feel free to contact me here [github](https://github.com/biechao/vue-my-table)
 
 ## Licence
 MIT
