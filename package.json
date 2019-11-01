@@ -1,6 +1,6 @@
 {
   "name": "vue-my-table",
-  "version": "0.3.0",
+  "version": "0.1.0",
   "private": false,
   "description": "this is table for vue",
   "main": "lib/vueMyTable.umd.js",
@@ -19,10 +19,12 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.24",
     "@fortawesome/free-solid-svg-icons": "^5.11.1",
     "@fortawesome/vue-fontawesome": "^0.1.7",
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.5",
     "vue-clickaway": "^2.2.2",
     "vue-i18n": "^8.14.1",
     "vue2-perfect-scrollbar": "^1.2.1"

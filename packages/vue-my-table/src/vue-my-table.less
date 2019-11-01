@@ -4,6 +4,42 @@
     font-size: 13px;
   }
   width: 100%;
+  position:relative;
+  .loader-overlay {
+      background-color: rgba(255, 255, 255, 0.8);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loader {
+      display: inline-block;
+      margin: 0 auto;
+      position: relative;
+      text-indent: -9999em;
+      vertical-align: top;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-left-color: rgba(0, 0, 0, 0.8);
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0); 
+      transform: translateZ(0);
+      animation: spinner 1s infinite linear;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 50%;
+      left: 50%;      
+  }  
   table{
     max-width: 100%;
     table-layout: fixed;

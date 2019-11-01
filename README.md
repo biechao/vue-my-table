@@ -41,7 +41,7 @@ Object for param
 			<td>columns</td>
 			<td>Array</td>
 			<td></td>
-			<td>Column of the table, please refer to this [table](#columns)</span></td>
+			<td>Column of the table, please refer to this <a href="#columns">table</a></td>
 		</tr>
 		<tr>
 			<td>sortColumn</td>
@@ -72,12 +72,49 @@ Object for param
 			<td>Boolean</td>
 			<td>false</td>
 			<td>Striped table makes it easier to distinguish different rows, false by default</td>
-		</tr>				
+		</tr>
+		<tr>
+			<td>mode</td>
+			<td>String</td>
+			<td>local</td>
+			<td>
+				'local' for use local data for table<br/>
+				'server' for get data from backend server
+			</td>
+		</tr>
+		<tr>
+			<td>url</td>
+			<td>String</td>
+			<td>-</td>
+			<td>
+				The url to get data from backend server for the table, only used in server mode
+			</td>
+		</tr>		
+		<tr>
+			<td>parameters for backend server</td>
+			<td>String</td>
+			<td>only used for server mode</td>
+			<td>
+				'rows' - how many records shows per page<br/>'page' - current page number<br/>'sidx' - sort by which column <br/>'sord' - sort by which order asc or desc
+			</td>
+		</tr>
+		<tr>
+			<td>response for backend server</td>
+			<td>Object</td>
+			<td>only used for server mode</td>
+			<td>
+				```
+				{
+					rows:[{object},{object}],
+					total:20
+				}
+				```
+			</td>
+		</tr>								
 	</tbody>
 </table>
 
-## Columns
-Object for columns
+<span id="columns">Object for columns</span>
 <table class="custom">
 	<thead>
 		<th>Name</th>
@@ -153,7 +190,7 @@ To-do list:
 Init version
 
 ## Contact
-Feel free to contact me here [github](https://github.com/biechao/vue-my-table)
+Feel free to contact me here [github](https://biechao.github.io/2019/10/29/how%20to%20use%20vue-my-table/)
 
 ## Licence
 MIT

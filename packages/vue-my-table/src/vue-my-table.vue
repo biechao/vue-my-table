@@ -96,16 +96,22 @@
                 </div>
             </div>
         </div>
+        <div v-show="loading" class="loader-overlay list">
+          <span class="loader"></span>
+        </div>        
     </div>
 </template>
 <script>
 import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import VueI18n from 'vue-i18n'
 import _ from 'lodash'
 import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
 Vue.use(PerfectScrollbar)
 Vue.use(VueI18n)
+Vue.use(VueAxios,axios)
 import { library } from '@fortawesome/fontawesome-svg-core'
 // import { faCalendarAlt,faClock } from '@fortawesome/free-regular-svg-icons'
 import { faSortAlphaUp, faSortAlphaDownAlt, faAngleLeft, faAngleRight, faAngleDown, faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -166,15 +172,14 @@ export default {
                     sortColumn: "",
                     defaultPageNumber: 10,
                     pageNumberList: [],
-                    url: "",
+                    url: "/json.data",
                     detailRowComponentName: "",
                     reloadFlag: false,
                     buttonAdd: {},
                     buttonAction: [],
                     dataSet: [],
                     mode: "server",
-                    autoQuery: true,
-                    showLoading: false
+                    autoQuery: true
                 }
             }
         }
@@ -236,7 +241,7 @@ export default {
             return this.totalPage <= 1;
         },
         needScroll() {
-        	return typeof(this.param.height) && parseInt(this.param.height) > 0;
+        	return typeof(this.param.height) && parseInt(this.param.height) > 0 && this.rows.length > 0;
         },
         scrollWidth(){
         	return '17px'
@@ -353,6 +358,8 @@ export default {
             }
         },
         getData() {
+            let needCheckbox = this.needCheckbox;
+            let needDetailRow = this.needDetailRow;
             if (this.mode == 'local') {
                 this.loading = true;
                 this.total = this.param.dataSet.length;
@@ -364,8 +371,6 @@ export default {
                     arr = arr.slice(start_num, end_num);
                 }
                 var _self = this;
-                let needCheckbox = this.needCheckbox;
-                let needDetailRow = this.needDetailRow;
                 _.forEach(arr, function(value, key) {
                     var tmp = {};
                     if (needCheckbox) {
@@ -380,6 +385,30 @@ export default {
                     _self.rows.push(tmp);
                 });
                 this.loading = false;
+            }else{
+                this.loading = true;
+                let _self = this;
+                let parameters = '?rows='+this.limit+'&page='+this.page+'&sidx='+this.sortColumn+'&sord='+this.sortOrder;
+                Vue.axios.get(this.param.url+parameters).then((response) => {
+                    _self.total = parseInt(response.data.total);
+                    if (_self.total == 0) {
+                        _self.page = 0;
+                    }
+                    _.forEach(response.data.rows, function(value, key) {
+                        var tmp = {};
+                        if (needCheckbox) {
+                            tmp["checked"] = false;
+                        }
+                        if (needDetailRow){
+                            tmp["expand"] = false;
+                        }
+                        _.forEach(value, function(v, k) {
+                            tmp[k] = v;
+                        });
+                        _self.rows.push(tmp);
+                    });
+                    _self.loading = false;
+                })
             }
         },
         updateComponent() {

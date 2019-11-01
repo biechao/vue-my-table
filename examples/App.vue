@@ -19,6 +19,7 @@ export default {
   },
   data(){
     return {
+      baseUrl: process.env.VUE_APP_BASE_URL,
       local_param:{
         columns:[
           {
@@ -94,7 +95,9 @@ export default {
         sortColumn:"name",
         height:300,
         detailRowComponentName:"col-detail",
-        stripe:true  
+        stripe:true,
+        mode:"server",
+        url:'http://localhost:3000'
       }
     }
   },
